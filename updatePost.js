@@ -24,7 +24,7 @@ const updatePost = (e) => {
   post["date"] = document.getElementById("postDate").value;
   post["tags"] = document.getElementById("postTags").value;
   post["id"] = id;
-
+  let token = localStorage.getItem("token");
   putPost(
     post.title,
     post.image,
@@ -32,6 +32,7 @@ const updatePost = (e) => {
     post.date,
     post.tags,
     post.id,
+    token,
     (body) => {
       alert("Post updated successfully!");
 

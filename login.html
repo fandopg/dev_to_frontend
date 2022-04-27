@@ -41,17 +41,17 @@
         </div>
     </nav>
     <!-- form -->
-    <div class=" position-relative text-center  ">
+    <div class=" position-relative text-center">
         <div class="card-header position-absolute top-50 start-50 translate-middle" style="margin-top: 200px;">
-            <form style=" display:flex; flex-direction: column; justify-content: center ">
+            <form style=" display:flex; flex-direction: column; justify-content: center" onsubmit="iniciarSesion(event);">
                 <div class="mb-3 ">
-                    <label for="exampleInputEmail1 " class="form-label ">Email:</label>
-                    <input type="email " class="form-control " id="exampleInputEmail1 " aria-describedby="emailHelp ">
+                    <label for="emailInput" class="form-label ">Email:</label>
+                    <input type="email" class="form-control " id="emailInput">
 
                 </div>
                 <div class="mb-3 ">
-                    <label for="exampleInputPassword1 " class="form-label ">Password:</label>
-                    <input type="password " class="form-control " id="exampleInputPassword1 ">
+                    <label for="passwordInput" class="form-label ">Password:</label>
+                    <input type="password " class="form-control " id="passwordInput">
                 </div>
 
                 <button type="submit " class="btn btn-primary ">Log in</button>
@@ -60,6 +60,8 @@
 
     </div>
 
+    <script src="./apiConnection.js"></script>
+    <script src="./login.js"></script>
 </body>
 
 </html>

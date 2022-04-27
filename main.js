@@ -161,6 +161,8 @@ const creaCardTop = () => {
   });
 };
 
+let token = localStorage.getItem("token"); //Recupera token del local storage
+
 const misPost = (e) => {
   e.preventDefault();
   mainContainer.innerHTML = `<h1 class="ms-5">All my Posts:</h1>`;
@@ -231,7 +233,7 @@ const misPost = (e) => {
 
 const eliminaPost = (id) => {
   if (window.confirm("Do you really want to delete the post?")) {
-    deletePost(id);
+    deletePost(id, token);
   }
   const delay = setTimeout(reload, 3000);
 

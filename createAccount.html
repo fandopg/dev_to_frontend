@@ -42,27 +42,30 @@
     <!-- form -->
     <div class=" position-relative text-center  ">
         <div class="card-header position-absolute top-50 start-50 translate-middle" style="margin-top: 200px;">
-            <form style=" display:flex; flex-direction: column; justify-content: center ">
+            <form style=" display:flex; flex-direction: column; justify-content: center" onsubmit="crearUsuario(event);">
                 <div class="mb-3 ">
-                    <label for="exampleInputEmail1 " class="form-label ">User Name:</label>
-                    <input type="email " class="form-control " id="exampleInputEmail1 " aria-describedby="emailHelp ">
+                    <label for="userNameInput " class="form-label ">User Name:</label>
+                    <input type="email " class="form-control " id="userNameInput">
 
                 </div>
                 <div class="mb-3 ">
-                    <label for="exampleInputEmail1 " class="form-label ">Email:</label>
-                    <input type="email " class="form-control " id="exampleInputEmail1 " aria-describedby="emailHelp ">
+                    <label for="emailInput" class="form-label ">Email:</label>
+                    <input type="email " class="form-control " id="emailInput">
 
                 </div>
                 <div class="mb-3 ">
-                    <label for="exampleInputPassword1 " class="form-label ">Password:</label>
-                    <input type="password " class="form-control " id="exampleInputPassword1 ">
+                    <label for="passwordInput" class="form-label ">Password:</label>
+                    <input type="password " class="form-control " id="passwordInput">
                 </div>
 
-                <button type="submit " class="btn btn-primary ">Registrar</button>
+                <button type="submit" class="btn btn-primary ">Registrar</button>
             </form>
         </div>
 
     </div>
+
+    <script src="./createAccount.js"></script>
+    <script src="./apiConnection.js"></script>
 
 </body>
 

@@ -13,6 +13,8 @@ const addCoverImage = (e) => {
   imageUrl = prompt("Image URL:");
 };
 
+let token = localStorage.getItem("token");
+
 const crearPost = (e) => {
   e.preventDefault();
   let post = {};
@@ -28,6 +30,7 @@ const crearPost = (e) => {
     post.content,
     post.date,
     post.tags,
+    token,
     (body) => {
       alert("Post published successfully!");
 

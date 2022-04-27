@@ -1,6 +1,6 @@
 const urlDB = "http://localhost:8000";
 
-const postPost = (title, image, content, date, tags, funcion) => {
+const postPost = (title, image, content, date, tags, token, funcion) => {
   const url = `${urlDB}/publications`;
   const post = {
     title,
@@ -15,6 +15,7 @@ const postPost = (title, image, content, date, tags, funcion) => {
     body: JSON.stringify(post),
     headers: {
       "Content-Type": "application/json",
+      token,
     },
   })
     .then((respuesta) => respuesta.json())
@@ -54,17 +55,23 @@ const getPostConId = (funcion) => {
     .catch((error) => console.log(error));
 };
 
-const deletePost = (id, funcion) => {
+const deletePost = (id, token, funcion) => {
   const url = `${urlDB}/publications/${id}`;
   fetch(url, {
     method: "DELETE",
+    headers: {
+      "Content-Type": "application/json",
+      token,
+    },
   })
     .then((respuesta) => respuesta.json())
-    .then((body) => funcion(body.payload))
+    .then((body) => {
+      funcion(body.payload);
+    })
     .catch((error) => console.log(error));
 };
 
-const putPost = (title, image, content, date, tags, id, funcion) => {
+const putPost = (title, image, content, date, tags, id, token, funcion) => {
   const url = `${urlDB}/publications/${id}`;
   const post = {
     title,
@@ -79,9 +86,53 @@ const putPost = (title, image, content, date, tags, id, funcion) => {
     body: JSON.stringify(post),
     headers: {
       "Content-Type": "application/json",
+      token,
     },
   })
     .then((respuesta) => respuesta.json())
     .then((body) => funcion(body.payload))
+    .catch((error) => console.log(error));
+};
+
+const postUser = (userName, email, password, funcion) => {
+  const url = `${urlDB}/users`;
+  const user = {
+    userName,
+    email,
+    password,
+  };
+  fetch(url, {
+    method: "POST",
+    body: JSON.stringify(user),
+    headers: {
+      "Content-Type": "application/json",
+    },
+  })
+    .then((respuesta) => respuesta.json())
+    .then((body) => {
+      funcion(body.payload);
+      console.log(body.payload);
+    })
+    .catch((error) => console.log(error));
+};
+
+const postLogIn = (email, password, funcion) => {
+  const url = `${urlDB}/auth/login`;
+  const user = {
+    email,
+    password,
+  };
+  fetch(url, {
+    method: "POST",
+    body: JSON.stringify(user),
+    headers: {
+      "Content-Type": "application/json",
+    },
+  })
+    .then((respuesta) => respuesta.json())
+    .then((body) => {
+      funcion(body.payload);
+      saveToken(body.payload);
+    })
     .catch((error) => console.log(error));
 };
