@@ -7,5 +7,6 @@ const crearUsuario = (e) => {
 
   postUser(user.userName, user.email, user.password, (body) => {
     alert("User created!");
+    window.location.href = "./login.html";
   });
 };

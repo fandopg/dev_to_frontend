@@ -28,22 +28,23 @@
                         class="icon icon-tabler icon-tabler-search" width="24" height="24" viewBox="0 0 24 24"
                         stroke-width="1.5" stroke="#2c3e50" fill="none" stroke-linecap="round"
                         stroke-linejoin="round">
-                        <path stroke="none" d="M0 0h24v24H0z" fill="none" />
-                        <circle cx="10" cy="10" r="7" />
-                        <line x1="21" y1="21" x2="15" y2="15" />
+                        <path stroke="none" d="M0 0h24v24H0z" fill="none">
+                        <circle cx="10" cy="10" r="7">
+                        <line x1="21" y1="21" x2="15" y2="15">
                     </svg>
             </form>
         </div>
         <div>
-            <a href="./login.html"><button type="button" class="btn btn-outline-primary">Log in</button></a>
+            <a href="./login.html"><button type="button" class="btn btn-outline-primary" id="loginButton">Log in</button></a>
 
-                    <button class="btn btn-outline-primary">
+                    <button class="btn btn-outline-primary" id="createAccountButton">
                 <a href="createAccount.html" class="button-account">Create account</a>
             </button>
 
-            <a href="./createPost.html"><button type="button" class="btn btn-outline-primary">Create
+            <a href="./createPost.html"><button type="button" id="createPostButton" class="btn btn-outline-primary">Create
                         Post</button></a>
-                <button type="button" class="position-relative bg-white border-0">
+                        <button type="button" id="logoutButton" class="btn btn-outline-danger visually-hidden" onclick="logout(event);">Logout</button>
+                <button type="button" class="position-relative bg-white border-0" id="notificationsIcon">
                     <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-bell" width="32"
                         height="32" viewBox="0 0 24 24" stroke-width="1.5" stroke="#2c3e50" fill="none"
                         stroke-linecap="round" stroke-linejoin="round">
@@ -80,10 +81,10 @@
                                 <p>We're a place where coders share, stay up-to-date and grow their careers.</p>
                             </div>
                             <div class="sl_row">
-                                <div class="create_account_button">
+                                <div class="create_account_button visually-hidden">
                                     <p>Create account</p>
                                 </div>
-                                <div class="login_button"><a href="./log_in.html">Log in</a></div>
+                                <div class="login_button visually-hidden"><a href="./log_in.html">Log in</a></div>
                             </div>
                         </div>
                         <div class="side_nav">

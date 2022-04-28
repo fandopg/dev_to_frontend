@@ -1,6 +1,6 @@
 const urlDB = "http://localhost:8000";
 
-const postPost = (title, image, content, date, tags, token, funcion) => {
+const postPost = (title, image, content, date, tags, token) => {
   const url = `${urlDB}/publications`;
   const post = {
     title,
@@ -8,6 +8,7 @@ const postPost = (title, image, content, date, tags, token, funcion) => {
     content,
     date,
     tags,
+    token,
   };
 
   fetch(url, {
@@ -19,7 +20,10 @@ const postPost = (title, image, content, date, tags, token, funcion) => {
     },
   })
     .then((respuesta) => respuesta.json())
-    .then((body) => funcion(body.payload))
+    .then((body) => {
+      console.log(body);
+      createPostResponse(body);
+    })
     .catch((error) => console.log(error));
 };
 
@@ -116,7 +120,7 @@ const postUser = (userName, email, password, funcion) => {
     .catch((error) => console.log(error));
 };
 
-const postLogIn = (email, password, funcion) => {
+const postLogIn = (email, password) => {
   const url = `${urlDB}/auth/login`;
   const user = {
     email,
@@ -131,8 +135,7 @@ const postLogIn = (email, password, funcion) => {
   })
     .then((respuesta) => respuesta.json())
     .then((body) => {
-      funcion(body.payload);
-      saveToken(body.payload);
+      loginResponse(body);
     })
     .catch((error) => console.log(error));
 };

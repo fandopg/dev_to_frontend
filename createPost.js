@@ -24,27 +24,17 @@ const crearPost = (e) => {
   post["date"] = fechaPost;
   post["tags"] = document.getElementById("postTags").value;
 
-  postPost(
-    post.title,
-    post.image,
-    post.content,
-    post.date,
-    post.tags,
-    token,
-    (body) => {
-      alert("Post published successfully!");
-
-      const delay = setTimeout(reload, 1000);
-
-      function reload() {
-        document.getElementById("home").click();
-      }
-    }
-  );
+  postPost(post.title, post.image, post.content, post.date, post.tags, token);
 };
 
-// const delay = setTimeout(reload, 3000);
-
-// function reload() {
-//   document.getElementById("avatar").click();
-// }
+const createPostResponse = (res) => {
+  console.log(res);
+  if (res.success) {
+    alert("Post published successfully!");
+    window.location.href = "./index.html";
+  } else {
+    // localStorage.removeItem("token");
+    // localStorage.removeItem("userLoginId");
+    window.location.href = "./login.html";
+  }
+};

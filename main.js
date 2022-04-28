@@ -1,6 +1,30 @@
 let fecha = new Date();
+
+let token = localStorage.getItem("token"); //Recupera token del local storage
 const buscarInput = document.querySelector("input");
 const mainContainer = document.getElementById("mainContainer");
+
+const avatar = document.getElementById("avatar");
+const createPostButton = document.getElementById("createPostButton");
+const notificationsIcon = document.getElementById("notificationsIcon");
+const loginButton = document.getElementById("loginButton");
+const createAccountButton = document.getElementById("createAccountButton");
+
+if (token == "" || token == null || token == "undefined") {
+  avatar.classList.add("visually-hidden");
+  createPostButton.classList.add("visually-hidden");
+  notificationsIcon.classList.add("visually-hidden");
+
+  loginButton.classList.remove("visually-hidden");
+  createAccountButton.classList.remove("visually-hidden");
+} else {
+  loginButton.classList.add("visually-hidden");
+  createAccountButton.classList.add("visually-hidden");
+
+  avatar.classList.remove("visually-hidden");
+  createPostButton.classList.remove("visually-hidden");
+  notificationsIcon.classList.remove("visually-hidden");
+}
 
 const buscarPost = (e) => {
   e.preventDefault();
@@ -80,7 +104,6 @@ const buscarPost = (e) => {
 };
 
 const cardsTop = document.getElementById("cardsTop");
-cardsTop.innerHTML = "algo";
 const creaCardTop = () => {
   //   e.preventDefault();
   cardsTop.innerHTML = "";
@@ -161,10 +184,10 @@ const creaCardTop = () => {
   });
 };
 
-let token = localStorage.getItem("token"); //Recupera token del local storage
-
 const misPost = (e) => {
   e.preventDefault();
+  const logoutButton = document.getElementById("logoutButton");
+  logoutButton.classList.remove("visually-hidden");
   mainContainer.innerHTML = `<h1 class="ms-5">All my Posts:</h1>`;
   getPost((mPost) => {
     mPost.forEach((post) => {
@@ -229,6 +252,15 @@ const misPost = (e) => {
       mainContainer.insertAdjacentHTML("beforeend", card);
     });
   });
+};
+
+const logout = (e) => {
+  e.preventDefault();
+  if (window.confirm("Are you sure you want to log out?")) {
+    localStorage.removeItem("token");
+    localStorage.removeItem("userLoginId");
+    window.location.href = "./index.html";
+  }
 };
 
 const eliminaPost = (id) => {
